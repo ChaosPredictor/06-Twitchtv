@@ -1,4 +1,4 @@
-var listOfChannels = ['storbeck', 'freecodecamp', 'twistgaming'];
+var listOfChannels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", 'storbeck', 'freecodecamp', 'twistgaming'];
 
 $(document).ready(function(){
 	startup();
@@ -16,14 +16,20 @@ function startup(){
 
 function requestToTwitch(channel) {
 	$.getJSON('https://api.twitch.tv/kraken/streams/' + channel + '?client_id=3ayqtffruo2goxf0cvyp75wjm28g4pq&callback=?', function(data) {
-		return data;
+		console.log(data);
+		console.log(data["stream"]["game"]);
 	});
 }
 
 function checkAllList(list){
 	for(var i = 0; i < list.length; i++) {
+		var data = requestToTwitch(list[i]);
 		printItem(list[i]);
-		//console.log(list[i]);
+		//console.log(data);
+		//var obj = JSON.parse(data);
+		//console.log(data);
+		//console.log(obj);
+		//console.log(data["responseJSON"]);
 	}
 }
 
