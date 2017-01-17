@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 	checkInput();
 
-	printItem();
+	//printItem();
 });
 
 function startup(){
@@ -22,17 +22,18 @@ function requestToTwitch(channel) {
 
 function checkAllList(list){
 	for(var i = 0; i < list.length; i++) {
-		console.log(list[i]);
+		printItem(list[i]);
+		//console.log(list[i]);
 	}
 }
 
-function printItem(){
+function printItem(name, text = "none", link = "none"){
 	var $origItem = $( ".list-item" ).first();
 	$item = $origItem.clone();
 	$item.appendTo( "#SelectList" );
-	$item.find("h3").text("Title");
-	$item.find("p").text("text");
-	$item.find("a").attr("href", "link");
+	$item.find("h3").text(name);
+	$item.find("p").text(text);
+	$item.find("a").attr("href", link);
 	$item.show();
 }
 
