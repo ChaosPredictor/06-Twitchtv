@@ -1,36 +1,17 @@
 var listOfChannels = ['storbeck', 'freecodecamp', 'twistgaming'];
 
 $(document).ready(function(){
-	checkAllList(listOfChannels);
-	
-	$("#o2").hide();
+	startup();
 
-	//checkInput();
-	checkInput2();
+	checkAllList(listOfChannels);
+
+	checkInput();
+
+	printItem();
 });
 
-function checkInput() {
-	var timeout;
-	$("#SearchBox").on("keyup", function () {
-		var userInput = $("#SearchBox").val();
-		window.clearTimeout(timeout);
-		timeout = window.setTimeout(function() {
-			showOnlyOptionsSimilarToText($("#SelectBox"), userInput, true);
-		}, 500);
-
-	});
-}
-
-function checkInput2() {
-	var timeout;
-	$("#SearchBox").on("keyup", function () {
-		var userInput = $("#SearchBox").val();
-		window.clearTimeout(timeout);
-		timeout = window.setTimeout(function() {
-			showOnlyOptionsSimilarToText2($("#SelectList"), userInput, true);
-		}, 500);
-
-	});
+function startup(){
+	$(".list-item").hide();
 }
 
 function requestToTwitch(channel) {
@@ -45,37 +26,29 @@ function checkAllList(list){
 	}
 }
 
+function printItem(){
+	var $origItem = $( ".list-item" ).first();
+	$item = $origItem.clone();
+	$item.appendTo( "#SelectList" );
+	$item.find("h3").text("Title");
+	$item.find("p").text("text");
+	$item.find("a").attr("href", "link");
+	$item.show();
+}
+
+function checkInput() {
+	var timeout;
+	$("#SearchBox").on("keyup", function () {
+		var userInput = $("#SearchBox").val();
+		window.clearTimeout(timeout);
+		timeout = window.setTimeout(function() {
+			showOnlyOptionsSimilarToText($("#SelectList"), userInput, true);
+		}, 500);
+
+	});
+}
 
 var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
-    if (typeof isCaseSensitive == 'undefined')
-        isCaseSensitive = true;
-    if (isCaseSensitive)
-        str = str.toLowerCase();
-
-    var $el = $(selectionEl);
-
-    $el.children("option:selected").removeAttr('selected');
-    $el.val('');
-    $el.children("option").hide();
-
-
-	$el.children("option").filter(function () {
-		var text = $(this).text();
-		var id= $(this).attr('id');
-		if (isCaseSensitive)
-			text = text.toLowerCase();
-		if (text.indexOf(str) > -1){
-			if (id != "o2") {
-				return true;
-			}
-		}
-			//return true;
-		return false;
-	}).show();
-
-};
-
-var showOnlyOptionsSimilarToText2 = function (selectionEl, str, isCaseSensitive) {
     if (typeof isCaseSensitive == 'undefined')
         isCaseSensitive = true;
     if (isCaseSensitive)
