@@ -32,3 +32,23 @@ body{
 				margin: 2px 0px;
 				margin-bottom: 10px;
 }
+
+.list-item a:hover{
+				text-decoration: none;
+}
+
+.list-item:hover{
+				background-color: #aaaaaa;
+}
+
+.list-item a div:hover{
+				color: #333333;
+}
+
+.list-item a div{
+				color: black;
+}
+
+.list-item a div p{
+				color: red;
+}

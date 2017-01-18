@@ -19,9 +19,9 @@ function requestToTwitch(channel) {
 		//console.log(data);
 		//console.log(data["stream"]["game"]);
 		if (data["stream"]) {
-			printItem(channel,"Online, run: " + data["stream"]["game"],"https://www.twitch.tv/" + channel);
+			printItem(channel,"Online, run: " + data["stream"]["game"],"https://www.twitch.tv/" + channel, true);
 		} else {
-			printItem(channel,"Offline","https://www.twitch.tv/" + channel);
+			printItem(channel,"Offline","https://www.twitch.tv/" + channel, false);
 		};
 	});
 }
@@ -29,22 +29,20 @@ function requestToTwitch(channel) {
 function checkAllList(list){
 	for(var i = 0; i < list.length; i++) {
 		var data = requestToTwitch(list[i]);
-		//printItem(list[i]);
-		//console.log(data);
-		//var obj = JSON.parse(data);
-		//console.log(data);
-		//console.log(obj);
-		//console.log(data["responseJSON"]);
 	}
 }
 
-function printItem(name, text = "none", link = "none"){
+function printItem(name, text = "none", link = "none", online = false){
 	var $origItem = $( ".list-item" ).first();
-	$item = $origItem.clone();
+	var $item = $origItem.clone();
 	$item.appendTo( "#SelectList" );
 	$item.find("h3").text(name);
 	$item.find("p").text(text);
 	$item.find("a").attr("href", link);
+	console.log(online);
+	if (online) {
+		$item.find("p").css("color", "green");
+	};
 	$item.show();
 }
 
