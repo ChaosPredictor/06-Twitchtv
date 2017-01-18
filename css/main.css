@@ -12,8 +12,8 @@ body{
   border-radius: 4px;
 }
 
-#o2 {
-				
+.menu-div {
+				padding-left: 0px;
 }
 
 #SearchBox{
@@ -23,14 +23,15 @@ body{
 #SelectList{
 				list-style-type: none;
 				padding-left: 5px;
-				margin-top: 10px;
+				margin-top: 20px;
 				margin-bottom: 100px;
 }
 
 .list-item {
 				border: 2px solid dimgray;
 				margin: 2px 0px;
-				margin-bottom: 10px;
+				margin-top: 5px;
+				margin-bottom: 5px;
 }
 
 .list-item a:visited{
@@ -55,4 +56,9 @@ body{
 
 .list-item a div p{
 				color: red;
+}
+
+.checkbox-div {
+				margin-top: 19px;
+				padding-left: 0px;
 }

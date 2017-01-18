@@ -20,9 +20,23 @@
 	</head>
 	<body>
 		<div class="col-md-4 main-div">
-			<input type="text" name="SearchBox" id="SearchBox" placeholder="Search" />
-			<ul id="SelectList">
-			</ul>
+			<div class="col-md-12 menu-div">
+				<div class="col-md-6">
+					<input type="text" name="SearchBox" id="SearchBox" placeholder="Search" />
+				</div>
+				<div class="col-md-6">
+					<div class="col-md-6 checkbox-div">
+						<input type="checkbox" name="vehicle" value="online" class="check-box" checked> Online
+					</div>
+					<div class="col-md-6 checkbox-div">
+						<input type="checkbox" name="vehicle" value="offline" class="check-box" checked> Offline
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<ul id="SelectList">
+				</ul>
+			</div>
 		</div>
 		<li class="col-md-10 list-item" >
 			<a href="google.com" target="_blank">
