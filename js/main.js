@@ -3,32 +3,48 @@ var listOfChannels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "sto
 $(document).ready(function(){
 	startup();
 
-	checkAllList(listOfChannels);
+	checkAllList(listOfChannels, true, true);
 
 	checkInput();
 
 	//printItem();
+	//
+	$('#checkbox-on').change(function(){
+		removeAll();
+		checkAllList(listOfChannels, this.checked, $('#checkbox-off'));
+	});
+	$('#checkbox-off').change(function(){
+		removeAll();
+		checkAllList(listOfChannels, $('#checkbox-on'), this.checked);
+	});
 });
 
 function startup(){
 	$(".list-item").hide();
 }
 
-function requestToTwitch(channel) {
+function removeAll() {
+	var $items = $("#SelectList").children();
+	for (var i = 0; i < $items.length; i++) {
+		$items[i].remove();
+	}
+}
+
+function requestToTwitch(channel, onStatus, offStatus) {
 	$.getJSON('https://api.twitch.tv/kraken/streams/' + channel + '?client_id=3ayqtffruo2goxf0cvyp75wjm28g4pq&callback=?', function(data) {
 		//console.log(data);
 		//console.log(data["stream"]["game"]);
-		if (data["stream"]) {
+		if (data["stream"] && onStatus) {
 			printItem(channel,"Online, run: " + data["stream"]["game"],"https://www.twitch.tv/" + channel, true);
-		} else {
+		} else if (offStatus) {
 			printItem(channel,"Offline","https://www.twitch.tv/" + channel, false);
 		};
 	});
 }
 
-function checkAllList(list){
+function checkAllList(list, onStatus, offStatus){
 	for(var i = 0; i < list.length; i++) {
-		var data = requestToTwitch(list[i]);
+		var data = requestToTwitch(list[i], onStatus, offStatus);
 	}
 }
 
