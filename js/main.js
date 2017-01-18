@@ -32,16 +32,19 @@ function checkAllList(list){
 	}
 }
 
-function printItem(name, text = "none", link = "none", online = false){
+function printItem(name, text, link, on){
 	var $origItem = $( ".list-item" ).first();
 	var $item = $origItem.clone();
+	var t = on;
 	$item.appendTo( "#SelectList" );
 	$item.find("h3").text(name);
 	$item.find("p").text(text);
 	$item.find("a").attr("href", link);
-	console.log(online);
-	if (online) {
+	console.log(on);
+	if (t) {
 		$item.find("p").css("color", "green");
+	} else {
+		$item.find("p").css("color", "red");
 	};
 	$item.show();
 }

@@ -33,6 +33,10 @@ body{
 				margin-bottom: 10px;
 }
 
+.list-item a:visited{
+				text-decoration: none;
+}
+
 .list-item a:hover{
 				text-decoration: none;
 }
