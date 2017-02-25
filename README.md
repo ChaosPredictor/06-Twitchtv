@@ -1,6 +1,6 @@
 ## Synopsis
 
-This is portfolio website that done as part of freeCodeCamp project. It's website is 5th website of Front End Development part, in Intermediate Front End Development Projects. The name of the projetc is Build a Wikipedia Viewer.
+This is portfolio website that done as part of freeCodeCamp project. It's website is 6th website of Front End Development part, in Intermediate Front End Development Projects. The name of the projetc is Build a Wikipedia Viewer.
 
 ## Code Example
 
